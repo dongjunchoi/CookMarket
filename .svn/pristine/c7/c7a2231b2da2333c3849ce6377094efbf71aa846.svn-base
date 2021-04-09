@@ -1,0 +1,5 @@
+package middle.market.dao;
+
+public class ClassDaoImpl implements ClassDao{
+
+}

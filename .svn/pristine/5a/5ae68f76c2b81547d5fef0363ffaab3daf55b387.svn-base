@@ -1,0 +1,654 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang=ko dir="ltr">
+
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width, viewport-fit=cover', initial-scale=1, user-scalable=no, shrink-to-fit=no">
+    <meta name="description" content="매달 전국각지의 양조장에서 오는 다양한 종류의 전통주를 경험하세요!">
+    <meta name="naver-site-verification" content="4b50d2f7153266cc1244c9e6320a62b2ca97d83e" />
+        <meta property="og:type" content="website">
+    <meta property="og:title" content="찾아오는 인생술, 술담화">
+    <meta property="og:description" content="매달 전국각지의 양조장에서 오는 다양한 종류의 전통주를 경험하세요!">
+    <meta property="og:image" content="https://sooldamhwa-static-file.s3.ap-northeast-2.amazonaws.com/seo_logo.png">
+    <meta property="og:url" content="https://sooldamhwa.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/lib/w3.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/public/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/public/favicon/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../public/popup.css">
+    <link rel="shortcut icon" href="/public/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/public/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../public/shopstyle.css?ver=1607311742">
+    <link rel="stylesheet" href="../public/stylep.css?ver=887788">
+    <link rel="stylesheet" href="../public/font-awesome.min.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="../js/jquery-latest.min.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131050684-1"></script>
+    
+    <!--Google Analytics Code-->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131050684-1');
+    </script>
+    <!--End Google Analytics Code-->
+    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+    <script type="text/javascript">
+        if (!wcs_add) var wcs_add = {};
+        wcs_add["wa"] = "44626930daff80";
+        wcs_do();
+    </script>
+    <!--End Naver Analytics Code-->
+
+     <!-- Google Tag Manager -->
+     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WZW7VSS');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '467680960428131');
+        fbq('track', 'PageView');
+    </script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+  </style>
+    <!-- Kakao Pixel Code -->
+    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript"> kakaoPixel('2697732037242932303').pageView(); </script>
+
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=336321937762415&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <title>술담화 :: 찾아오는 인생술</title>
+</head>
+
+<body>
+        <div id="wrap">
+        <div id="header">
+            <div id="header_content">
+                <input type="hidden" name="loginConfirm" value="">
+                <label for="menuCheck" class="sidemenu_button">
+                    <span class="icon_bar"></span>
+                    <div class="menu">메뉴</div>
+                </label>
+                <a href="/home/" id="header_subs_pc">
+                    <img src="/public/img/shop/top_subs_icon_png.png">
+                    <div class="header_sub">전통주 정기 구독 서비스 바로가기</div>
+                </a>
+                <a class="logo" href="/shop/">
+                    <img src="/public/img/shop/logo_shop.jpg">
+                </a>
+                <label for="cartCheck" class="cart_button" onclick="reTotalPrice('');">
+                    <img src="/public/img/shop/cart_png.png">
+                    <span>0</span>
+                </label>
+                <div id="header_login_group">
+                    <a href="마이페이지메인.html">마이페이지</a><a href="<%=request.getContextPath() %>/cookmarket/Cookmarket.do">로그아웃</a><a href="충전소메인.html">충전소</a>
+                </div>
+            </div>
+            <!-- sidemenu start -->
+            <input type="checkbox" id="menuCheck" class="inputhidden">
+            <label for="menuCheck" id="sidemenu_bg"></label>
+            <div id="sidemenu">
+                <div class="sidemenu_content">
+                                            <ul class="sidemenu_content_join" style="display:block;">
+
+                        </ul>
+                                        <ul class="sidemenu_content_kind">
+                        <span>문의 <img src="/public/img/shop/dropdown_1.png"></span>
+                        <li><a href="/shop/shopList/category_list_01/">문의 게시판</a></li>
+                        <li><a href="/shop/shopList/category_list_02/">약주, 청주</a></li>
+                        <li><a href="/shop/shopList/category_list_04/">와인, 과실주</a></li>
+                        <li><a href="/shop/shopList/category_list_03/">증류주</a></li>
+                    </ul>
+                    <ul class="sidemenu_content_area">
+                        <span>지역 <img src="/public/img/shop/dropdown_2.png"></span>
+                        <li><a href="/shop/shopList/category_brewing_01/">경기도</a></li>
+                        <li><a href="/shop/shopList/category_brewing_02/">충청도</a></li>
+                        <li><a href="/shop/shopList/category_brewing_03/">경상도</a></li>
+                        <li><a href="/shop/shopList/category_brewing_04/">전라도</a></li>
+                        <li><a href="/shop/shopList/category_brewing_05/">강원도</a></li>
+                        <li><a href="/shop/shopList/category_brewing_06/">제주도</a></li>
+                    </ul>
+                    <ul class="sidemenu_content_other">
+                        <span>기타 <img src="/public/img/shop/dropdown_3.png"></span>
+                        <li><a href="/brewery">양조장별 보기</a></li>
+                        <li><a href="/shop/shopList/category_list_06/">담금주</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- sidemenu end -->
+            <!-- cart start -->
+            <form id="cartOrderFrom" action="/order/" method="POST">
+                <input type="hidden" id="orderType" name="orderType" value="cart">
+                <input type="checkbox" id="cartCheck" class="inputhidden">
+                <label for="cartCheck" id="sidemenu_bg"></label>
+                <!-- 민규수정 장바구니 2020-04-20 -->
+                <div id="cart">
+                                        <div class="baskitTotalPrice">
+                        <span>현재 총 구매 가격</span>
+                        <span id="baskitTotalPrice">0원</span>
+                        <div class="TotalPriceIcon"><img src="/public/img/shop/calculator.png"></div>
+                    </div>
+                    <button type="button" id="cartBtnSubmit" class="buyBtn" name="button">
+                        구매하기
+                        <div class="TotalPriceIcon">
+                            <img src="/public/img/shop/calculator.png">
+                        </div>
+                    </button>
+                    <div class="cart_top">
+                        <a href="/dashboard/recommendSDH/" class="nav_suggest">추천 퀴즈 해볼까요?</a>
+                        <div class="cart_img"><img src="/public/img/shop/cart_png.png"></div>
+                        <div id="cart_length">
+                            <div>0</div>
+                        </div>
+                    </div>
+                    <div class="cart_content_event">
+                        <a href="/shop/shopList/category_best/" class="nav_best">베스트셀러 만나보기!</a>
+                    </div>
+                    <div class="cart_content">
+                        <div class="cartblank"></div>
+                        <div class="cart_content_brewery">장바구니가 비었습니다.</div>                                        </div>
+                    </div>
+            </form>
+
+
+            <!-- 장바구니 end -->
+     
+            <div id="nav">
+                <div id="nav_content">
+                    <input type="checkbox" id="Main_category" class="inputhidden">
+                    <label for="Main_category" class="Main_category_btn">
+                        <div class="burger">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="">쿡마켓 카테고리</div>
+                        <div class="category_content">
+                            <ul>
+                                <!-- <span>종류</span> -->
+                                <li><img src="/public/img/shop/dropdown_1.png">
+                                    <a style="color:#f5b54d">야채</a>
+                                    <a href="/shop/shopList/category_list_01/">파</a>
+                                    <a href="/shop/shopList/category_list_02/">양파</a>
+                                    <a href="/shop/shopList/category_list_04/">당근</a>
+                                    <a href="/shop/shopList/category_list_03/">증류주</a></li>
+                                <!-- <li></li>
+                            <li><a href="/shop/shopList/category_list_04/">- 와인, 과실주</a></li> -->
+                                <!-- <li><a href="/shop/shopList/category_list_03/">- 증류주</a></li> -->
+                            </ul>
+                            <ul>
+                                <!-- <span>지역</span> -->
+                                <li><img src="/public/img/shop/dropdown_2.png">
+                                    <a style="color:#ea7475">음식</a>
+
+                                    <a href="/shop/shopList/category_brewing_01/">경기도</a>
+                                    <a href="/shop/shopList/category_brewing_02/">충청도</a>
+                                    <a href="/shop/shopList/category_brewing_03/">경상도</a>
+                                    <a href="/shop/shopList/category_brewing_04/">전라도</a>
+                                    <a href="/shop/shopList/category_brewing_05/">강원도</a>
+                                    <a href="/shop/shopList/category_brewing_06/">제주도</a></li>
+                            </ul>
+                            <ul>
+                                <!-- <span>기타상품</span> -->
+                                <li><img src="/public/img/shop/dropdown_3.png">
+                                    <a style="color:#7595cb">기타</a>
+
+                                    <a href="/brewery/">양조장별 보기</a>
+                                    <a href="/shop/shopList/category_list_06/">담금주</a></li>
+                            </ul>
+                        </div>
+                    </label>
+                    <div class="nav_set">
+                        <a href="<%=request.getContextPath() %>/food/Foodmain.do" class="nav_new">식자재</a>
+                        <a href="<%=request.getContextPath() %>/class/Classmain.do" class="nav_best">클래스</a>
+                       	<a href="<%=request.getContextPath() %>/event/Eventmain.do" class="nav_HowToUse">이벤트</a>
+                        <a href="<%=request.getContextPath() %>/recipe/Recipemain.do" class="nav_event">레시피</a>
+                    </div>
+                    
+                    <div class="nav_search">
+                        <img src="/public/img/shop/searchIcon.png" alt="">
+                    </div>
+                    <div class="search_box_goods">
+                        <div class="search_box_header">
+                            <span>무엇을 찾고 계신가요?</span>
+                            <span class="closeSearchBox"><img src="/public/img/shop/close.png" alt=""></span>
+                        </div>
+                        <form method="GET" id="sdhSearch" action="/sdhsearch/">
+                            <div class="search_box_input">
+                                <input type="text" id="" name="searchText" value="" placeholder="제품명 혹은 양조장명을 입력해주세요">
+                                <button>
+                                    <img src="/public/img/shop/searchIcon.png" alt="">
+                                </button>
+                            </div>
+                        </form>
+                        <div class="search_box_list">
+                            <span>술담화 추천</span>
+                            <ul>
+                                <li>검색</li>
+                            </ul>
+                        </div>
+                        <div class="search_box_list">
+                            <span>최근검색</span>
+                            <ul>
+                                <li>검색</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <input type="search" id="nav_search_pc" name="nav_search_pc" placeholder="검색" value="" onkeypress="if(event.keyCode===13) {sdhsearch();}">
+                    <input type="checkbox" id="cart_pc" class="inputhidden">
+
+                    
+                    <label for="cartCheck" class="cart_pc_btn" onclick="reTotalPrice('');" style="position:fixed;">
+                        <img src="https://sooldamhwa.com/public/img/shop/cart_png.png" alt="">
+                        <span>0</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC버전 header end -->
+        <!-- 20200420 황선주 수정 확인 -->
+        <div id="content" ><div class="h_event">
+    <div class="h_event_pc">
+        <div class="top-bn-contain">
+            <!-- slider btn -->
+            <button type="button" id="bn-perv-btn" class="bn-prev-btn"></button>
+            <button type="button" id="bn-next-btn" class="bn-next-btn"></button>
+            <!--  슬라이드 배너 시작점입니다. slider btn -->
+            <div class="top-banner">
+                <div class="bn-num">
+                    <span class="activeBtn"  ></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <!-- slider start  -->
+                <div class="banner-contain">
+<!--                     <div class="bn-col" id="lastClon" ><div class="bn-inner"></div></div> -->
+<!--                     <div class="bn-col" onclick="location.href='/board/event_view/16'"><div class="bn-inner"></div></div> -->
+<!--                     <div class="bn-col"  onclick="location.href='/shop/detail/180'"><div class="bn-inner"></div></div> -->
+<!--                     <div class="bn-col" onclick="location.href='/dashboard/recommendSDH';fbq('track', 'ViewContent');kakaoPixel('2697732037242932303').viewContent({ id: '180' });"><div class="bn-inner"></div></div> -->
+<!--                     <div class="bn-col" onclick="location.href='/board/eventlottecard'"><div class="bn-inner"></div></div> -->
+<!--                     <div class="bn-col" onclick="location.href='/shop/detail/180';fbq('track', 'ViewContent');kakaoPixel('2697732037242932303').viewContent({ id: '180' });" id="firstClon"><div class="bn-inner"></div></div> -->
+                </div>
+                <!-- slider end  -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="rec_subs">
+    <div class="rec">
+        <span>어느 전통주를 사야할지 모르시겠다구요?</span>
+        <h3>당신에게 꼭 맞는<br>전통주를 추천해드려요</h3>
+    </div>
+    <div class="subs">P
+        <span>전통주 소믈리에가 추천하는 전통주를</span>
+        <h3>매달 정기적으로<br>집에서 받아보고 싶다면?</h3>
+    </div>
+</div> -->
+<!-- <div class="rec_subs service_Intro">
+    <div>
+        <div class="rec_bottom" onclick="location.href='/dashboard/recommendSDH/'">
+            <img src="/public/img/shop/rec_m.png">
+            <h2>추천 서비스</h2>
+        </div>
+    </div>
+    <div>
+        <div class="subs_bottom" onclick="location.href='/home/'">
+            <img src="/public/img/shop/subs_m.png">
+            <h2>구독 서비스</h2>
+        </div>
+    </div>
+</div> -->
+<div class="shop-banner-section">
+    <div class="rec" onclick="location.href='/dashboard/recommendSDH/'">
+        <img src="/public/img/shop/rec_icon_new.png">
+        <h6>전통주 추천 서비스</h6>
+        <h5>전통주 추천 서비스 바로가기 ></h5>
+    </div>
+
+
+    <div class="sub" onclick="location.href='/home/'">
+        <img src="/public/img/shop/sub_icon_new.png">
+        <h2>전통주 구독 서비스</h2>
+        <h5>전통주 구독 서비스 바로가기 ></h5>
+    </div>
+    <div class="event" onclick="location.href='/board/event/'">
+        <img src="/public/img/shop/event_icon_new.png">
+        <h2>이벤트</h2>
+        <h5>진행 중인 이벤트 바로가기 ></h5>
+    </div>
+
+</div>
+<div class="detail_text">
+    <div class="rec_text"><h2>어느 전통주를 사야 하실 지 모르시겠다구요? 꼭 맞는 전통주를 추천해드려요.</h2></div> 
+    <div class="sub_text"><h2>전통주 소믈리에가 추천하는 전통주를 매달 정기적으로 집에서 받아보세요!</h2></div>
+    <div class="event_text"><h2>온라인, 오프라인, 각종 시음회 등, 술담화가 주최하는 이벤트를 구경해보세요!</h2></div>
+</div>
+<div class="horizontal_line"><hr class="line"></div>
+
+</head>
+<body>
+
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+    </div>
+
+  </div>
+
+  
+<div class="container-fluid bg-3 text-center">    
+  <h3>Some of my Work</h3><br>
+  <div class="row">
+    <div class="col-sm-3">
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-3"> 
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-3"> 
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-3">
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+  </div>
+</div><br>
+
+<div class="container-fluid bg-3 text-center">    
+  <div class="row">
+    <div class="col-sm-3">
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-3"> 
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-3"> 
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-3">
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+  </div>
+</div><br><br>
+
+
+<div class="horizontal_line2"><hr class="line"></div>
+<div class="shop-register-description">지금 포인트 충전 하시고 각종 서비스를 경험하세요!</div>
+<div class="shop-register-section">
+
+
+
+        <div class="register_icon" onclick="location.href='/auth/authMobile/'"><img src = "/public/img/shop/register_icon.png"></div> 
+        <div class="register_text" onclick="location.href='/auth/authMobile/'"><h2>충전 하러가기 ></h2></div>
+
+
+
+        
+        <div class="get_point_icon"><img src = "/public/img/shop/get_point_icon.png"> </div>
+        <div class="get_point_text"> <h2>신규회원 포인트 적립</h2></div>
+    
+
+    
+        <div class="suggest_service_icon"><img src = "/public/img/shop/suggest_service_icon.png"> </div>
+        <div class="suggest_service_text"> <h2>클래스 서비스 이용</h2></div>
+        
+        <div class="review_write_icon"><img src = "/public/img/shop/review_write_icon.png"> </div>
+        <div class="review_write_text"> <h2>레시피 서비스 이용</h2></div>
+
+        <div class="organized_note_icon"><img src = "/public/img/shop/organized_note_icon.png"> </div>
+        <div class="organized_note_text"> <h2>게시판 서비스 이용</h2></div>
+
+
+
+</div>
+
+
+
+
+    <div class="category_boxes" style="margin-bottom: 50px">
+        <div class ="category_box_title"> 
+            <h3>카테고리별로 즐겨보세요!</h3>
+            <h4>"종류별, 지역별로 구경해보세요"</h4>
+        </div>
+        
+        <div class ="category_box_1">
+            <div class="category_1_img"> <img src="/public/img/shop/takju.png"> </div> 
+            <div class="category_1_text"> <h2>탁주, 막걸리</h2> </div>
+        </div>
+
+        <div class ="category_box_2">
+            <div class="category_2_img"> <img src="/public/img/shop/yakju.png"> </div> 
+            <div class="category_2_text"> <h2>약주, 청주</h2> </div>
+        </div>
+
+        <div class ="category_box_3">
+            <div class="category_3_img"> <img src="/public/img/shop/fruitju.png"> </div> 
+            <div class="category_3_text"> <h2>과실주</h2> </div>
+        </div>
+
+        <div class ="category_box_4">
+            <div class="category_4_img"> <img src="/public/img/shop/damwhabox.png"> </div> 
+            <div class="category_4_text"> <h2>담화박스</h2> </div>
+        </div>
+
+        <div class ="category_box_5">
+            <div class="category_5_img"> <img src="/public/img/shop/jejuisland.png"> </div> 
+            <div class="category_5_text"> <h2>제주도</h2> </div>
+        </div>
+
+        <div class ="category_box_6">
+            <div class="category_6_img"> <img src="/public/img/shop/brewery.png"> </div> 
+            <div class="category_6_text"> <h2>양조장별</h2></div>
+        </div>
+
+        <div class ="category_box_7">
+            <div class="category_7_img"><img src="/public/img/shop/fruitju.png"></div> 
+            <div class="category_7_text"><h2>과실주</h2></div>
+        </div>
+        <div class ="category_box_8">
+            <div class="category_8_img"><img src="/public/img/shop/yakju.png"></div> 
+            <div class="category_8_text"> <h2>약주, 청주</h2></div>
+        </div>
+        <div class ="category_box_9">
+            <div class="category_9_img"><img src="/public/img/shop/damwhabox.png"></div> 
+            <div class="category_9_text"><h2>담화박스</h2></div>
+        </div>
+<!-- 
+    <div class="intro">
+        <div class="intro_box">
+            <div class="intro_box_content">
+                <span>술담화에 대해서<br>더 알고 싶으시다구요?</span>
+                <div class="intro_inbox" onclick="location.href='/board/damhwaService/'">
+                    <img src="/public/img/shop/logo_bottom_m.png">
+                    <h2>술담화 소개</h2>
+                </div>
+                <p>전통주 대중화를 꿈꾸는,<br>음주문화 개선을 꿈꾸는,</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div> -->
+<!-- <div class="intro_pc">
+    <span>술담화에 대해서 더 알고 싶으시다구요?</span>
+    <div class="intro_box_pc">
+        <div>전통주 대중화를 꿈꾸는,<br>음주문화 개선을 꿈꾸는,</div>
+        <div>
+        <button onclick="location.href='/board/damhwaService/'">술담화 소개</button>
+        </div>
+    </div>
+</div> -->
+</div>
+
+
+<div id="main_popup_" style=" display:none; height:<br />
+<b>Notice</b>:  Undefined variable: popup in <b>/home/hosting_users/sooldamhwa/www/application/views/shop/index.php</b> on line <b>528</b><br />
+<br />
+<b>Notice</b>:  Trying to get property of non-object in <b>/home/hosting_users/sooldamhwa/www/application/views/shop/index.php</b> on line <b>528</b><br />
+px; margin-left:-140px;">
+    <div class="popup_bottom" style="width:100%; display:flex; padding-top:5px; height:20px; background:#000;">
+    <span class="pull-right white" id="closePopup" style="margin-left:auto; margin-right:5px; color:#fff; cursor:pointer;">닫기</span>
+    <span class="pull-right white" id="closeDay_" style="margin-left:5px; margin-right:5px; color:#fff; cursor:pointer;">오늘하루 닫기</span>
+    </div>
+    <a href="https://sooldamhwa.com/shop/detail/180"><img src="https://sooldamhwa-static-file.s3.ap-northeast-2.amazonaws.com/novermber_box.jpg" alt="" style="width:100%;"></a>
+</div>
+
+<!-- <div class="horizontal_line2"><hr class="line"></div> -->
+<script src="/public/js/main-slider.js"></script>
+<script src="/public/js/channelTalk.js"></script>
+<script type="text/javascript">
+
+$( document ).ready( function() {
+// var popCoo = $.cookie('popup2');
+//     if(popCoo == 1){
+        $("#main_popup_").hide();
+    // }
+    // else{
+    //     $("#main_popup_").show();
+    // }
+});
+
+
+
+
+
+$("#closePopup").click(function(){
+    $("#main_popup_").hide('fade');
+});
+
+$("#closeDay_").click(function(){
+    $.cookie('popup2', '1', { expires: 1 });
+    $("#main_popup_").hide();
+});
+</script>
+</div>
+<div id="footer">
+    <div class="">
+        <div class="footer-social">
+        </div>
+    </div>
+    <div class="">
+      <ul class="footer-bar">
+      </ul>
+    </div>
+    <div class="damhwaInfo">
+      <div class="pcfooter_left">
+        <div class="infoNum info02">
+            <p>고객센터: 050-6725-9338</p>
+            <p>평일 10:00-18:00, 주말 휴무</p>
+        </div>
+        <div class="info01">
+          <p>술담화는 통신판매중개자로서 통신판매 당사자가 아니며,</p>
+          <p>판매자가 등록한 상품정보 및 거래에 대해 술담화는 책임을 지지 않습니다.</p>
+        </div>
+          <div class="info04 footer_col">
+            <div class="footer_col1 escro_word">
+              <p>고객님의 안전거래를 위해 현금 등으로 결제 시 저희 쇼핑몰에서</p>
+              <p>가입한 NICE구매안전 (에스크로)서비스를 이용하실 수 있습니다.</p>
+            </div>
+            <div class="footer_col2 escro_mark">
+            </div>
+            <div class="footer_col2 escro_check">
+              <p class="footer_col2-content"><b>서비스가입사실 확인</b></p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="pcfooter_right">
+        <div class="info00">
+          <p>담화컴퍼니 주식회사</p>
+          <p>대표: 이재욱</p>
+          <p>정보보호 책임자: 박준형</p>
+          <p>경기도 용인시 수지구 상현동 508 광교우미뉴브 A동 525-3호</p>
+        </div>
+        <div class="info03">
+          <form name="frm1">
+            <input type="hidden" name="wrkr_no" type="text" value="6208158299"/>
+          </form>
+          <p>통신판매 신고번호: 2020-용인수지-1270</p>
+          <p>대표전화: 050-6725-9338</p>
+          <p>이메일: info@sooldamhwa.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+  function ready(){
+    alert('준비중입니다! 1:1문의에 남겨주시면 바로 처리해드리겠습니다.');
+    location.href='/dashboard/requests/';
+  }
+  function ready1(){
+    alert('준비중입니다! 050-6725-9338로 전화주시면 바로 처리해드리겠습니다.');
+    location.href='/home/';
+  }
+  function onopen() {
+    var url =
+    "http://www.ftc.go.kr/bizCommPop.do?wrkr_no="+frm1.wrkr_no.value;
+    window.open(url, "bizCommPop", "width=750, height=700;");
+  }
+
+</script>
+<script src="/public/js/common.js?ver=1606285208"></script>
+<script src="/public/js/shop.js?ver=1606180782"></script>
+<script type="text/javascript">
+  function onopen() {
+    var url =
+    "http://www.ftc.go.kr/bizCommPop.do?wrkr_no="+frm1.wrkr_no.value;
+    window.open(url, "bizCommPop", "width=750, height=700;");
+  }
+</script>
+

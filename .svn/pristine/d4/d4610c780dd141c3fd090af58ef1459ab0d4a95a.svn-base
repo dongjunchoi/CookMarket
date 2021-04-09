@@ -1,0 +1,134 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+<div class="box1">
+
+		<div id="result1">
+			<div class="container">
+				<h2>회원가입</h2>
+				<br>
+				<form id="joinform" class="form-horizontal">
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="id">아이디<br><span id="idCk"></span></label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="id"
+								placeholder="Enter id" name="mem_id">
+						</div>
+						<input id="idbtn" class="btn btn-warning" type="button"
+							value="중복검사"> <span id=idspan></span>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="pwd">비밀번호<br><span id="pwCk"></span></label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="pwd"
+								placeholder="Enter password" name="mem_pass">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="pwd2">비밀번호 확인<br><span id="pwreCk"></span></label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="pwd2"
+								placeholder="Enter password" name="mem_pass2">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="name">이름<br><span id="nmCk"></span></label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="name"
+								placeholder="Enter name" name="mem_name">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="bir">생년월일<br><span id="birCk"></span></label>
+						<div class="col-sm-4">
+							<input type="date" class="form-control" id="bir"
+								placeholder="Enter bir" name="mem_bir">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="hp">전화번호<br><span id="hpCk"></span></label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="hp"
+								placeholder="Enter hp" name="mem_hp">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="email">Email<br><span id="mailCk"></span></label>
+						<div class="col-sm-2">
+							<input type="email" class="form-control" id="email" placeholder="Enter email" name="mem_mail">@
+							<select class="from-controls" id="emails" name="emails">
+								<option value ="none">직접입력</option>
+								<option value ="naver">네이버</option>
+								<option value ="daum">다음</option>
+								<option value ="hanmail">한메일</option>
+								<option value ="google">구글</option>
+							</select>
+						</div>
+						<span id="checked"></span>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="zip">우편번호</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="zip"
+								placeholder="Enter zip" name="mem_zip">
+						</div>
+						<input id="modalzip" class="btn btn-success" type="button"
+							data-toggle="modal" data-target="#myModal" value="우편번호검색">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="add1">주소</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="add1"
+								placeholder="Enter add1" name="mem_add1">
+						</div>
+						<span id="checked"></span>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="add2">상세주소<br><span id="addrCk"></span></label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="add2"
+								placeholder="Enter add2" name="mem_add2">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<div class="checkbox">
+								<label><input type="checkbox" name="remember">
+									Remember me</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button id="joinbtn" type="button" class="btn btn-info">전송</button>
+							<button id="clear" type="reset"class="btn btn-info">초기화</button>
+							<span id="joinspan"></span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

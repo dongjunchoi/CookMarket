@@ -1,0 +1,10 @@
+package middle.market.service;
+
+
+import java.util.List;
+
+import middle.market.vo.NoticeVO;
+
+public interface NoticeService {
+	public List<NoticeVO> getAllNoticeList();
+}

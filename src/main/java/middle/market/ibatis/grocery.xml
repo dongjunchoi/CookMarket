@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd"> 	
+	
+<sqlMap namespace="grocery">
+
+<!-- <insert parameterClass="groceryVo" id="insertGrocery">INSERT INTO grocery(grocery_cod, g_name, g_price, seller_cod)VALUES (#grocery_cod#,#g_name#, #g_price#, #seller_cod#) </insert><update parameterClass="groceryVo" id="updateGrocery">UPDATE grocery SET g_name= #g_name# , g_price = #g_price# ,seller_cod = #seller_cod# WHEREgrocery_cod = #grocery_cod# </update><delete parameterClass="string" id="deleteGrocery">DELETE grocery WHEREgrocery_cod = #grocery_cod# </delete><select id="getAllGrocery" resultClass="groceryVo">SELECT * FROM grocery </select><select parameterClass="String" id="getGrocery"resultClass="groceryVo">SELECT * FROM grocery WHERE grocery_cod = #grocery_cod# </select><select parameterClass="string" id="getcod" resultClass="int">SELECTCOUNT(*) cn FROM grocery WHERE grocery_cod = #grocery_cod# </select><update parameterClass="java.util.Map" id="updateGrocery2">update grocery set$field$ = #data# where grocery_cod = #grocery_cod# </update> -->
+
+
+<!-- 식료품 등록(관리자) -->
+
+
+<insert id="insertGrocery" parameterClass="groceryVo">INSERT INTO grocery VALUES ( 'g' || gro_seq.nextval , #g_name# , #g_price# , seller_seq.nextval , #filename# ) </insert>
+
+<!-- 식료품 삭제(관리자) -->
+
+
+<delete id="deleteGrocery" parameterClass="String">DELETE grocery where grocery_cod = #grocery_cod# </delete>
+
+<!-- 회원들이나 관리자가 구매할 수 있는 전체 식료품 조회 -->
+
+
+<select id="getAllGrocery" resultClass="groceryVo">select *from grocery </select>
+
+<!-- 식료품 1개 상세 조회 -->
+
+
+<select id="getGrocery" parameterClass="String" resultClass="groceryVo">SELECT * FROM grocery WHERE grocery_cod = #grocery_cod# </select>
+
+<!-- 식료품 수정 ( 관리자) -->
+
+
+<!-- 식료품 코드 수정 -->
+
+
+<update id="updateGroceryCod" parameterClass="groceryVo">UPDATE grocery SET grocery_cod = #grocery_cod# WHERE grocery_cod = #grocery_cod# </update>
+
+<!-- 식료품명 수정 -->
+
+
+<update id="updateGroceryName" parameterClass="groceryVo">UPDATE grocery SET g_name = #g_name# WHERE grocery_cod = #grocery_cod# </update>
+
+<!-- 식료품가격 수정 -->
+
+
+<update id="updateGroceryPrice" parameterClass="groceryVo">UPDATE grocery SET g_price = #g_price# WHERE grocery_cod = #grocery_cod# </update>
+
+<!-- 식료품 명, 가격 , 판매자 코드 수정 -->
+
+
+<update id="updateGrocery" parameterClass="groceryVo">UPDATE grocery SET g_name = #g_name# , g_price = #g_price# , seller_cod = #seller_cod#WHERE grocery_cod = #grocery_cod# </update>
+
+<!-- 장바구니 추가 -->
+
+
+<insert id="insertShopBag" parameterClass="shopbagVo">INSERT INTO shoppingbag VALUES( 's' || shoppingbag_seq.nextval , #id# , #pr_price# , #item# , #grocery_cod# ) </insert>
+
+<!-- 장바구니 내역 삭제 ( 사용자가 1개 삭제) 사용자가 삭제클릭한 식료품의 식료품 코드를 받아온다. -->
+
+
+<delete id="deleteShopBag" parameterClass="String">DELETE shoppingbag WHERE grocery_cod = #grocery_cod# </delete>
+
+<!-- 장바구니에 있는 제품 결제하기 아래는 하나의 과정이다. 결제를 진행하면 아래 모든것을 다 실행해야 한다. 1,2,3 ,4 ,5 모두 실행해야 한다. -->
+
+
+<!-- 1. 결제전에 충전 포인트가 구매하기에 충분한지 확인한다. id 를 받는다. 여기서 '구매가능' 이 나올때만 2,3,4 를 실행한다. -->
+
+
+<select id="checkPointMem" parameterClass="String" resultClass="String">SELECT CASE WHEN P.point >= S.sum THEN '구매가능' WHEN P.point $lt; S.sum THEN '잔액부족' ELSE '오류' ENDFROM(SELECT pointFROM member3WHERE id = #id#) P ,(SELECT sum(pr_price) sumFROM shoppingbagWHERE id = #id#) S </select>
+
+<!-- 2. (1. )의 식이 부합할때 2. 번으로 넘어온다. 아이디필요. 결제와 동시에 멤버테이블의 회원1명의 포인트에서 사용자가 결제한 금액만큼 빼줘야 한다. -->
+
+
+<update id="OrderUpdateMemberPoint" parameterClass="String">UPDATE member3 SET point = member3.point - (SELECT sum(pr_price) sumFROM shoppingbagWHERE id = #id#)WHERE id = #id# </update>
+
+<!-- 3. 회원의 장바구니 목록이 주문이 되면 장바구니에서는 목록 전체를 삭제해줘야 한다. -->
+
+
+<delete id="OrderDeleteShopBag" parameterClass="String">DELETE shoppingbag where id = #id# </delete>
+
+<!-- 4. order 테이블에 넣어준다. 능력의 한계로 select 에서 받아서 다시 넣어줄예정... -->
+
+
+<!-- 5-1 order 테이블에 넣어줄 인자인 id, pr_cod, order_price, pr_name 인자를 받기 위함. 따라서 orderVo 에 넣어줌. -->
+
+
+<select id="selectForOrder" parameterClass="String" resultClass="orderVo">SELECT shoppingbag.grocery_cod pr_cod , grocery.g_name pr_name , grocery.g_price order_price , shoppingbag.id idFROM shoppingbag , groceryWHERE shoppingbag.id = #id#AND shoppingbag.grocery_cod = grocery.grocery_cod; </select>
+
+<!-- 5-2 order 테이블에 5-1 에서 받아온 인자를 iaction controller 에서 처리해서 넣어준다. -->
+
+
+<!-- //////////////////////////////////////////////////// -->
+<insert id="insertOrder" parameterClass="orderVo">
+	insert into order3 values ( 'o' || order_seq.nextval , sysdate, 'n', #id# , #pr_cod# , #order_price# , #pr_name#, #pr_count# )
+</insert>
+
+
+
+<!-- 고객이 구매를 확정하게 되면 order_status 가 결제완료인 'n' 에서 주문완료인 'd' 로 변경된다. -->
+
+
+<update id="OrderUpdateStatus" parameterClass="String">update order3 set order_status = 'd' where id = #id# </update>
+
+</sqlMap>

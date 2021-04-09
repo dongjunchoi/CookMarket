@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd"> 	
+	
+
+<sqlMap namespace = "notice">
+
+
+	<!-- 공지사항 전체 조회 -->
+	
+	<select id="getAllNotice" resultClass="noticeVo" >
+		SELECT *
+		FROM notice
+	</select>
+	
+	<!-- 공지사항 상세 조회 -->
+	<select id="getNotice" parameterClass="String" resultClass="noticeVo">
+		select * from notice where n_title = #n_title#
+	</select>
+	
+	
+	
+	<!-- 공지사항 등록   -->
+	<insert id="noticeInsert" parameterClass="noticeVo">
+		INSERT INTO notice values 
+		( 'n' || #n_cod#  , #n_title# , #n_content#  , #m_name#, SYSDATE )
+	</insert>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteNotice" parameterClass="String">
+		delete from notice
+		where n_title=#n_title#
+	</delete>
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateNotice" parameterClass="noticeVo">
+		update notice set
+		n_title=#n_title#, n_content=#n_content#, m_name=#m_name#
+		where n_title=#n_title#
+	</update>
+
+
+
+</sqlMap>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd"> 	
+	
+	
+
+<sqlMap namespace = "user">
+
+	<select id="allMem" resultClass="userVo">
+		SELECT * FROM member3
+	</select>
+	
+	<!-- id찾기 -->
+   <select id="searchid" parameterClass="userVo" resultClass="string">
+      select id from member3 where name = #name# and email = #email#
+   </select>
+   <!-- pass찾기 -->
+   <select id="searchPass" parameterClass="userVo" resultClass="string">
+      select pass from member3 where id = #id# and email = #email#
+   </select>
+   
+   <!-- 충전하기 충전포인트를 입력받아서 입력한다. 충전내역이 된다. -->
+   <insert id="chargePoint"  parameterClass="chargeVo" >
+      INSERT INTO charge (id, charge, charge_date) VALUES(#id#, #charge# , SYSDATE)
+      <selectKey keyProperty="charge" resultClass="int">
+      	SELECT point FROM member3 WHERE id=#id#
+      </selectKey> 
+   </insert>
+   
+   <!-- 실시간으로 member3테이블에 회원데이터의 포인트에 반영이된다. 위의 쿼리와 동시에 진행 -->
+   <update id="updatepoint" parameterClass="userVo">
+      UPDATE member3 SET point = point + #point# where id= #id#
+   </update> 
+
+	<!-- 로그인시 아이디 비밀번호가 테이블에 존재하는지 여부 -->
+	
+	<select id="loginCheckSelect" parameterClass="userVo" resultClass="int">
+		select count(*)
+		from member3 
+		where id = #id# and pass = #pass#
+	</select>
+	
+		<!-- id중복체크 -->
+	<select id="selectId" parameterClass="String" resultClass="String">
+		select id from member3 where id = #id#
+	</select>
+	
+		<!-- 가입 -->
+	<insert id="insertMember" parameterClass="userVo">
+		insert into member3(id, pass, name, phone, email, zip, addr1, addr2)
+						values(#id#, #pass#, #name#, #phone#, #email# , #zip#, #addr1#, #addr2#)
+		<selectKey keyProperty="id" resultClass="String">
+			select id from member3 where id = #id#
+		</selectKey>
+	</insert>
+	
+	<!-- 로그인시 마지막 로그인일자를 매번 sysdate update 필요 , 장기미사용자구별목적 -->
+	
+	<update id="loginDateUpdate" parameterClass="String">
+		update member3 set lastlogin = sysdate where id = #id# 
+	</update>
+	
+	<!-- 로그인시 일반/요리사/관리자인지 구별 -->
+	
+	<select id="loginGradeCodeSelect" parameterClass="String" resultClass="String" >
+		SELECT gradecode(회원구분코드) 
+		FROM member3
+		WHERE id = #id# 
+	</select>
+	
+	
+	<!-- 회원가입 정보 등록 -일반회원과 메니저 모두 사용 ( 아래아래 charge테이블 insert 반드시 같이 코딩 해주세요) -->
+	
+	<insert id="joinInsertA" parameterClass="userVo" >
+		INSERT INTO member3 VALUES ( #id#, #name#, #pass#, #email#, #phone#, 
+									#gradecode# , 0 , sysdate , #zip# , #addr1# , #addr2# , NULL )
+	</insert>
+	
+	<!--  회원가입 정보 등록 - 요리사  ( 아래 charge테이블 insert 반드시 같이 코딩 해주세요)-->
+		
+	<insert id="joinInsertC" parameterClass="userVo">
+		INSERT INTO member3 VALUES ( #id#, #name#, #pass#, #email#, #phone#, 
+									'c' , 0 , sysdate , #zip# , #addr1# , #addr2# , #work_cod# )
+	</insert>
+	
+	
+	
+	<!-- 위에 회원가입 정보 등록 insert 실행시  반드시 charge테이블에 각각 회원의 포인트를 0 으로 셋팅 필요 -->
+	
+	<insert id="joinChargeInsert" parameterClass="String" >
+		INSERT INTO charge values ( #id# , '0', sysdate)
+	</insert>
+	
+	
+	<!-- 아이디 찾기 - 이메일값필요 -->
+	<select id="findIdSelectE" parameterClass="String" resultClass="String"  >
+		SELECT id
+		FROM member3
+		WHERE email = #email#
+	</select>
+		
+	<!-- 아이디 찾기 - 전화번호값필요 -->
+	<select id="findIdSelectT" parameterClass="String" resultClass="String" >
+		SELECT id
+		FROM member3
+		WHERE phone = #phone#
+	</select>
+	
+
+	
+	<!-- 비밀번호 찾기 이메일/아이디값필요 -->
+	<select id="findPass" parameterClass="userVo" resultClass="String" >
+		SELECT pass
+		FROM member3
+		WHERE  email = #email#
+		AND id = #id#
+	</select>
+	
+	
+	<!-- 회원 1명의 정보 조회 아이디값필요 -->
+	<select id="viewOneMemSelect" parameterClass="String" resultClass="userVo">
+        SELECT  id, name, email, phone ,  
+				DECODE (gradecode , 'a' , '일반회원' , 'c' , '요리사' , 'm' , '관리자') gradecode , 
+				point , lastlogin  , zip, addr1, addr2, work_cod
+		FROM member3
+        WHERE id = #id#
+	
+	</select>
+	
+	
+	<!-- 구매횟수에 따른 회원분류 ( 다이아몬드/사파이어/골드/실버/일반) 아이디값필요  -->
+	<select id="memberGradeSelect" parameterClass="String" >
+		SELECT ( CASE WHEN COUNT(order_cod) >= '200' THEN '다이아몬드' 
+                      WHEN COUNT(order_cod) >= '150' THEN '사파이어'
+					  WHEN COUNT(order_cod) >= '100' THEN '골드'
+                      WHEN COUNT(order_cod) >= '50' THEN '실버'
+                      WHEN COUNT(order_cod) >= '0' THEN '일반'
+                     ELSE 'VVIP' 
+                     END ) grade 
+		FROM order3
+		WHERE order_status = 'd' AND id = #id#
+		GROUP BY id
+	</select>
+
+
+	<!-- 회원정보 수정 - 패스워드 변경 -->
+	<update id="updatePass" parameterClass="userVo" >
+		UPDATE member3 SET pass = #pass# WHERE id = #id# 
+	</update>
+
+	<!-- 회원정보 수정 - 이메일 변경 -->
+	<update id="updateEmail">
+		UPDATE member3 SET email = #email# WHERE id = #id#
+	</update>
+	
+	<!-- 회원정보 수정 - 주소 변경 -->
+		<update id="updateAddr" parameterClass="userVo">
+		UPDATE member3 SET zip=#zip#, addr1=#addr1#, addr2=#addr2# WHERE id = #id#
+	</update>
+	
+	<!-- 회원 삭제 -->
+	<delete id="deleteuser" parameterClass="String">
+		DELETE FROM member3 WHERE id = #id#
+	</delete>
+	
+	<!-- 포인트저장 -->
+	<update id="updatepoint2" parameterClass="userVo" >
+		UPDATE member3 SET point = #point# WHERE id = #id# 
+	</update>
+		
+	<!-- charge찾기 -->
+	<select id="selectChar" parameterClass="String" resultClass="chargeVo">
+		select charge, charge_date from charge WHERE id=#id#
+	</select>
+	
+	<!-- order찾기 -->
+	<select id="selectOrder" parameterClass="String" resultClass="orderVo">
+		select pay_date, pr_name, order_price from order3 WHERE id=#id#
+	</select>
+
+
+
+	
+	
+
+
+</sqlMap>

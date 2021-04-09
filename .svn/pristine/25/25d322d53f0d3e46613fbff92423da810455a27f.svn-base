@@ -1,0 +1,10 @@
+# 이 줄은 주석 처리 줄 입니다.
+# 이 문서를 작성하는 방법
+# key값=value값 과 같은 형식으로 작성합니다.
+
+# 사용할 URI와 Mapping되는 Action객체를 연결해 준다.
+
+#회원가입 연결
+/memberForm.do=middle.market.action.user.RegTest
+/memberForm2.do=middle.market.action.user.RegTest2
+/noticeList.do=middle.market.action.notice.NoticeListAction
